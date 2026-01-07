@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=VT323&display=swap');
+
+body {
+    font-family: 'VT323', monospace;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: left;
+    margin: 10px;
+    cursor: default;
+}
+
+h1 {
+    font-size: 5em;
+}
+
+a {
+    color: rgb(255, 123, 255);
+    text-decoration: none;
+    cursor: default;
+    width: 100%;
+    display: block;
+}
+
+a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    margin: 0;
+    /* removes default h1 margin */
+    letter-spacing: -2px;
+    /* tighten letters */
+    white-space: nowrap;
+    /* prevents weird wrapping */
+}
