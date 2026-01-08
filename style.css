@@ -34,8 +34,62 @@ a:hover {
 .logo {
     margin: 0;
     /* removes default h1 margin */
-    letter-spacing: -1px;
+    letter-spacing: -16px;
     /* tighten letters */
     white-space: nowrap;
     /* prevents weird wrapping */
+}
+
+/* Search Bar Styles */
+#search-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    border-top: 1px solid #333;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+#search-input {
+    width: 100%;
+    background-color: #111;
+    border: 1px solid #333;
+    color: #fff;
+    font-family: 'VT323', monospace;
+    font-size: 0.8em;
+    padding: 5px 10px;
+    outline: none;
+}
+
+#search-input:focus {
+    border-color: #00ff00;
+}
+
+.game-entry {
+    margin-bottom: 5px;
+}
+
+/* Filtering Logic */
+body.searching>*:not(#search-container):not(.games) {
+    display: none;
+    /* Hide everything except search and games container */
+}
+
+body.searching .games>h3,
+body.searching .games>p,
+body.searching .games>a {
+    /* Hide headers and loose links in games container */
+    display: none;
+}
+
+body.searching .game-entry {
+    display: none;
+    /* Hide all game entries by default when searching */
+}
+
+body.searching .game-entry.match {
+    display: block;
+    /* Show only matching entries */
 }

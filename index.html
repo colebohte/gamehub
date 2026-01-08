@@ -18,44 +18,61 @@
     </h1>
 
     <h2 style="color:rgba(255, 102, 102, 1)">GameHub is still in development, some games wont work as expected.</h2>
-    <h3 style="color:rgb(255, 199, 102)">Known Issue: Games take a while to load; we cannot do anything about that. <a
-            href="https://github.com/colebohte/gamehub/issues">Report any other issues to GitHub</a></h3>
+    <h3 style="color:rgb(255, 199, 102)">Known Issue: Ruffle (Flash) Games do NOT work as the Ruffle JS plugin is not
+        set up properly.</h3>
+    <a href="https://github.com/colebohte/gamehub/issues">Report any other issues to GitHub</a>
 
     <p>Welcome to GameHub</p>
-    <p>Choose a game/game site</p>
+    <marquee style="position:fixed; top:0; margin: 5px;">
+        <p style="background-color: rgba(0, 0, 0, 0.5);">GameHub is still in development, some games wont work as
+            expected. Please report any issues to GitHub.</p>
+    </marquee>
 
     <h2>Games</h2>
     <div class="games">
         <h3>Essentials:</h3>
-        <a href="gta.html">Knockoff GTA</a> <span style="color:rgba(255, 255, 255, 0.5)">Upon load, head to [Настройки
-            (Settings) >
-            Язык (Language) > English]</span><br><br>
-        <a href="baldi.html">Baldi's Basics?</a><br>
-        <a href="rocket.html">Fake Rocket League (RocketGoal.io)</a><br>
-        <a href="clash.html">Clash Royale (I think)</a><br>
-        <a href="pixelgun.html">Pixel Gun Survival</a><br>
+        <div class="game-entry">
+            <a href="gta.html">Knockoff GTA</a> <span style="color:rgba(255, 255, 255, 0.5)">Upon load, head to
+                [Настройки
+                (Settings) >
+                Язык (Language) > English]</span>
+        </div>
+        <div class="game-entry"><a href="baldi.html">Baldi's Basics?</a></div>
+        <div class="game-entry"><a href="rocket.html">Fake Rocket League (RocketGoal.io)</a></div>
+        <div class="game-entry"><a href="clash.html">Clash Royale (I think)</a></div>
+        <div class="game-entry"><a href="pixelgun.html">Pixel Gun Survival</a></div>
+        <div class="game-entry"><a href="basketballstars.html">Basketball Stars</a></div>
+
+        <h3>Itch.io Games:</h3>
+        <div class="game-entry"><a href="a-small-world-cup/index.html">A Small World Cup (Official)</a></div>
+        <div class="game-entry"><a href="electric-trains/index.html">Electric Trains (coming soon</a></div>
 
         <h3>Old MS-DOS Games:</h3>
-        <a href="doom.html">DOOM 1993</a><br>
-        <a href="wolfenstein.html">Wolfenstein 3D</a><br>
-        <a href="pacman.html">Pac-Man</a>
+        <div class="game-entry"><a href="doom.html">DOOM 1993</a></div>
+        <div class="game-entry"><a href="wolfenstein.html">Wolfenstein 3D</a></div>
+        <div class="game-entry"><a href="pacman.html">Pac-Man</a></div>
 
         <h3>.io Games:</h3>
-        <a href="slither.html">Slither.io Clone</a><br>
-        <a href="tallio.html">Tall.io Clone</a><br>
-        <a href="paperio.html">Paper.io</a><br>
-        <a href="waterpoolio.html">Water Pool Heroes.io</a><br>
+        <div class="game-entry"><a href="slitherio.html">Slither.io Clone</a></div>
+        <div class="game-entry"><a href="tallio.html">Tall.io Clone</a></div>
+        <div class="game-entry"><a href="paperio.html">Paper.io</a></div>
+        <div class="game-entry"><a href="waterpoolio.html">Water Pool Heroes.io</a></div>
 
         <h3>Flash Games:</h3>
-        <a href="mario63.html">Super Mario 63</a><br>
-        <a href="plantsvszombies.html">Plants vs Zombies</a><br>
-        <a href="warefare1944.html">Warfare 1944</a><br>
+        <p>No Flash Games currently work, Ruffle is kinda sped</p>
+        <div class="game-entry"><a href="mario63.html">Super Mario 63</a></div>
+        <div class="game-entry"><a href="plantsvzombies.html">Plants vs Zombies</a></div>
+        <div class="game-entry"><a href="warfare1944.html">Warfare 1944</a></div>
 
         <h3>Web Browser Minecraft:</h3>
-        <a href="https://classic.minecraft.net">Classic (Minecraft @ classic.minecraft.net)</a><br>
-        <a href="eaglercraft/1.5.2.html">v1.5.2 (Eaglercraft @ cole-debian)</a><br>
-        <a href="eaglercraft/1.8.8.html">v1.8.8 (Eaglercraft @ cole-debian)</a><br>
-        <a href="eaglercraft/1.12.2.html">v1.12.2 (Eaglercraft @ cole-debian)</a>
+        <div class="game-entry"><a href="https://classic.minecraft.net">Classic (Minecraft @ classic.minecraft.net)</a>
+        </div>
+        <div class="game-entry"><a href="eaglercraft/1.5.2.html">v1.5.2 (Eaglercraft @ cole-debian.landevices.net)</a>
+        </div>
+        <div class="game-entry"><a href="eaglercraft/1.8.8.html">v1.8.8 (Eaglercraft @ cole-debian.landevices.net)</a>
+        </div>
+        <div class="game-entry"><a href="eaglercraft/1.12.2.html">v1.12.2 (Eaglercraft @ cole-debian.landevices.net)</a>
+        </div>
     </div>
 
     <h2>Game Sites</h2>
@@ -71,6 +88,13 @@
         <a href="https://colebohte.github.io">Cole Bohte</a> ----------- <a href="https://rivergames.ca">River Games</a>
         <br><br>
     </div>
+    <br><br><br>
+
+    <div id="search-container">
+        <input type="text" id="search-input" autocomplete="off" placeholder="Start typing anytime to search...">
+    </div>
+
+    <script src="search.js"></script>
 </body>
 
 </html>
