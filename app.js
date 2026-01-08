@@ -1,41 +1,41 @@
-// Register Service Worker
+let deferredPrompt = null;
+const installBtn = document.getElementById("installBtn");
+
+// Register service worker
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
-        navigator.serviceWorker
-            .register("")
-            .then(reg => {
-                console.log("SW registered:", reg.scope);
-            })
-            .catch(err => {
-                console.error("SW registration failed:", err);
-            });
+        navigator.serviceWorker.register("/service-worker.js");
     });
 }
 
-// Handle install prompt (Chrome / Edge / Android)
-let deferredPrompt = null;
-
+// Listen for install availability
 window.addEventListener("beforeinstallprompt", (e) => {
-    // Stop the mini-infobar from showing automatically
+    // Stop Chrome from auto showing anything
     e.preventDefault();
+
     deferredPrompt = e;
 
-    // You can now show your own "Install" button
-    console.log("GameHub is installable");
+    // Show install button
+    if (installBtn) {
+        installBtn.hidden = false;
+    }
 });
 
-// Call this when user clicks your install button
-async function installApp() {
+// Handle install click
+installBtn?.addEventListener("click", async () => {
     if (!deferredPrompt) return;
 
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
 
-    console.log("Install outcome:", outcome);
-    deferredPrompt = null;
-}
+    console.log("Install result:", outcome);
 
-// Optional: detect when app is installed
+    deferredPrompt = null;
+    installBtn.hidden = true;
+});
+
+// Optional: hide button if already installed
 window.addEventListener("appinstalled", () => {
-    console.log("GameHub installed successfully");
+    console.log("App installed");
+    installBtn.hidden = true;
 });
