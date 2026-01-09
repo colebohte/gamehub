@@ -1,12 +1,15 @@
 const CACHE_NAME = "app-cache-v1";
-const OFFLINE_URL = "/offline.html";
+const OFFLINE_URL = "./offline.html";
 
 // Files that should always be available offline
 const PRECACHE_ASSETS = [
-    "/",
-    "/index.html",
-    "/app.js",
-    "/manifest.json",
+    "./",
+    "./index.html",
+    "./app.js",
+    "./search.js",
+    "./style.css",
+    "./manifest.json",
+    "./logo.png",
     OFFLINE_URL
 ];
 

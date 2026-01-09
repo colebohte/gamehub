@@ -1,14 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=VT323&family=Roboto+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap');
+
+:root {
+    /* Fonts */
+    --font-vt323: 'VT323', monospace;
+    --font-audiowide: 'Audiowide', cursive;
+    --font-roboto: 'Roboto Mono', monospace;
+    --font-ibm: 'IBM Plex Mono', monospace;
+    --font-current: var(--font-vt323);
+    /* Default */
+
+    /* Default (Terminal) Theme */
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --link-color: rgb(255, 123, 255);
+    --link-hover-bg: rgba(255, 255, 255, 0.05);
+    --ui-bg: rgba(50, 50, 50, 0.5);
+    --ui-border: #333;
+    --ui-filter: blur(5px);
+    --accent-color: #00ff00;
+    --modal-bg: rgba(30, 30, 30, 0.95);
+    --modal-text: #fff;
+    --modal-border: #333;
+    --backdrop-color: rgba(0, 0, 0, 0.7);
+    --accent-color-2: rgb(0, 255, 145);
+}
+
+/* Light Theme */
+body.theme-light {
+    --bg-color: #ffffff;
+    --text-color: #222222;
+    --link-color: #0056b3;
+    --link-hover-bg: rgba(0, 0, 0, 0.05);
+    --ui-bg: rgba(240, 240, 240, 0.8);
+    --ui-border: #ccc;
+    --accent-color: #000000;
+    /* Contrast for light mode */
+    --modal-bg: rgba(255, 255, 255, 0.95);
+    --modal-text: #000;
+    --modal-border: #ccc;
+    --backdrop-color: rgba(255, 255, 255, 0.5);
+    --accent-color-2: #007bff;
+}
+
+/* Dim Theme */
+body.theme-dim {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --link-color: #ff99ff;
+    --link-hover-bg: rgba(255, 255, 255, 0.05);
+    --ui-bg: rgba(60, 60, 60, 0.5);
+    --ui-border: #444;
+    --accent-color: #00ff00;
+    --modal-bg: rgba(40, 40, 40, 0.95);
+    --modal-text: #ddd;
+    --modal-border: #555;
+    --backdrop-color: rgba(0, 0, 0, 0.5);
+    --accent-color-2: #00ff91;
+}
 
 body {
-    font-family: 'VT323', monospace;
+    font-family: var(--font-current);
     margin: 0;
     padding: 0;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     text-align: left;
     margin-left: 10px;
     cursor: default;
+    transition: background-color 0.3s, color 0.3s, font-family 0.3s;
+    /* Smooth transitions */
+    overflow-x: hidden;
+    /* Disable horizontal scrolling */
+    scrollbar-width: none;
+    /* Firefox: Hide scrollbar */
+}
+
+/* Chrome, Safari, Edge: Hide scrollbar */
+body::-webkit-scrollbar {
+    display: none;
 }
 
 h1 {
@@ -16,37 +85,56 @@ h1 {
 }
 
 a {
-    color: rgb(255, 123, 255);
+    color: var(--link-color);
     text-decoration: none;
     cursor: default;
-    width: 100%;
+    width: 100vw;
+    margin-right: 10px;
     display: block;
     transition: 0.2s;
     position: relative;
 }
 
 a:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--link-hover-bg);
     font-size: 1.5em;
     transition: 0.2s;
+    padding-left: 35px;
+}
+
+a:hover::before {
+    content: "> ";
+    position: absolute;
+    left: 10px;
+    color: var(--accent-color);
+    animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 .logo {
     margin: 0;
-    /* removes default h1 margin */
     letter-spacing: -16px;
-    /* tighten letters */
     white-space: nowrap;
-    /* prevents weird wrapping */
 }
 
 /* Search Bar Styles */
-#foot-container {
+.foot-container {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-
+    gap: 10px;
     z-index: 1000;
     padding: 15px;
     display: flex;
@@ -54,24 +142,78 @@ a:hover {
     align-items: center;
 }
 
-#foot-content {
+.foot-content {
     width: 50%;
-    background-color: rgba(50, 50, 50, 0.5);
-    backdrop-filter: blur(5px);
-    border: 1px solid #333;
+    background-color: var(--ui-bg);
+    backdrop-filter: var(--ui-filter);
+    border: 1px solid var(--ui-border);
+    color: var(--text-color);
+    font-family: var(--font-current);
+    font-size: 1.2em;
+    padding: 10px 20px;
+    outline: none;
+    cursor: text;
+    /* Looks like text area */
+    display: flex;
+    align-items: center;
+}
+
+.bash-prompt {
+    color: var(--accent-color);
+    margin-right: 10px;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.naked-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-family: var(--font-current);
+    font-size: 1em;
+    /* Inherit size roughly */
+    width: 100%;
+    padding: 0;
+}
+
+.foot-content:focus-within {
+    border-color: var(--accent-color);
+}
+
+/* Force foot content text to be appropriate for the theme */
+body:not(.theme-light) .foot-content,
+body:not(.theme-light) .foot-button {
     color: #fff;
+    /* Keep white text for dark themes on UI elements if they stay dark? No, let's use var(--text-color) or define specific ui-text */
+}
+
+/* Actually, let's rely on var(--text-color) or a specific var */
+
+.foot-content,
+.foot-button {
+    color: var(--text-color);
+}
+
+/* In light mode, ui-bg is light, so text-color (dark) works. */
+/* In dark mode, ui-bg is dark, so text-color (light) works. */
+
+.foot-button {
+    width: 12%;
+    background-color: var(--ui-bg);
+    backdrop-filter: var(--ui-filter);
+    border: 1px solid var(--ui-border);
+    color: var(--text-color);
     font-family: 'VT323', monospace;
     font-size: 1.2em;
     padding: 10px 20px;
     outline: none;
+    cursor: default;
 }
 
-#foot-content:focus {
-    border-color: #00ff00;
-}
-
-#foot-content:hover {
-    border-color: #00ff00;
+.foot-content:hover,
+.foot-button:hover {
+    border-color: var(--accent-color);
     transition: 0.2s;
 }
 
@@ -80,24 +222,79 @@ a:hover {
 }
 
 /* Filtering Logic */
-body.searching>*:not(#search-container):not(.games) {
+body.searching>*:not(.foot-container):not(.games):not(#secret):not(.logo):not(#search-results-header) {
     display: none;
-    /* Hide everything except search and games container */
 }
 
 body.searching .games>h3,
 body.searching .games>p,
 body.searching .games>a {
-    /* Hide headers and loose links in games container */
     display: none;
 }
 
 body.searching .game-entry {
     display: none;
-    /* Hide all game entries by default when searching */
 }
 
 body.searching .game-entry.match {
     display: block;
-    /* Show only matching entries */
+}
+
+/* Modal Styles */
+dialog {
+    background-color: var(--modal-bg);
+    color: var(--modal-text);
+    border: 1px solid var(--modal-border);
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    font-family: var(--font-current);
+    font-size: 1.5em;
+    max-width: 400px;
+}
+
+dialog::backdrop {
+    background-color: var(--backdrop-color);
+    backdrop-filter: blur(5px);
+}
+
+dialog h2 {
+    margin-top: 0;
+    color: var(--accent-color-2);
+}
+
+dialog .modal-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px rgba(0, 255, 145, 0.3);
+    /* Keep fixed color for image shadow or variable? */
+}
+
+/* Settings Modal Specifics */
+#settings-modal .theme-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+#settings-modal .theme-btn,
+#settings-modal .font-btn {
+    width: auto;
+    /* Override 12% */
+    flex: 1 1 auto;
+    cursor: pointer;
+}
+
+#close-modal,
+#close-settings {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
 }

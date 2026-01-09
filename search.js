@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const gameEntries = document.querySelectorAll('.game-entry');
     const secret = document.getElementById('secret'); // 👀
+    const resultsHeader = document.getElementById('search-results-header');
+    const searchQuerySpan = document.getElementById('search-query');
 
     document.addEventListener('keydown', (e) => {
         if (e.ctrlKey || e.altKey || e.metaKey || e.key.length > 1) {
@@ -31,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
             entry.classList.toggle('match', text.includes(query));
         });
 
-        // 🔓 reveal the secret when "hack" is typed
         secret.hidden = query !== 'hack';
     }
 });
