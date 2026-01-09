@@ -41,30 +41,38 @@ a:hover {
 }
 
 /* Search Bar Styles */
-#search-container {
+#foot-container {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #000;
-    border-top: 1px solid #333;
-    box-sizing: border-box;
+
     z-index: 1000;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#search-input {
-    width: 100%;
-    background-color: #111;
+#foot-content {
+    width: 50%;
+    background-color: rgba(50, 50, 50, 0.5);
+    backdrop-filter: blur(5px);
     border: 1px solid #333;
     color: #fff;
     font-family: 'VT323', monospace;
-    font-size: 0.8em;
-    padding: 5px 10px;
+    font-size: 1.2em;
+    padding: 10px 20px;
     outline: none;
 }
 
-#search-input:focus {
+#foot-content:focus {
     border-color: #00ff00;
+}
+
+#foot-content:hover {
+    border-color: #00ff00;
+    transition: 0.2s;
 }
 
 .game-entry {
