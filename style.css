@@ -23,6 +23,7 @@
     --modal-border: #333;
     --backdrop-color: rgba(0, 0, 0, 0.7);
     --accent-color-2: rgb(0, 255, 145);
+    transition: background-color 1s, color 1s, font-family 1s;
 }
 
 /* Light Theme */
@@ -40,6 +41,7 @@ body.theme-light {
     --modal-border: #ccc;
     --backdrop-color: rgba(255, 255, 255, 0.5);
     --accent-color-2: #007bff;
+    transition: background-color 1s, color 1s, font-family 1s;
 }
 
 /* Dim Theme */
@@ -56,6 +58,7 @@ body.theme-dim {
     --modal-border: #555;
     --backdrop-color: rgba(0, 0, 0, 0.5);
     --accent-color-2: #00ff91;
+    transition: background-color 1s, color 1s, font-family 1s;
 }
 
 body {
