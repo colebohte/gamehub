@@ -8,6 +8,13 @@ if ("serviceWorker" in navigator) {
     });
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
+    if (!isStandalone) {
+        alert("We recommend installing the GameHub app for an enhanced experience");
+    }
+});
+
 // Listen for install availability
 window.addEventListener("beforeinstallprompt", (e) => {
     // Stop Chrome from auto showing anything
